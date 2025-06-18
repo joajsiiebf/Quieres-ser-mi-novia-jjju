@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Quieres ser mi novia?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #ffc0cb, #fff0f5);
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+      text-align: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #d81b60;
+      margin-top: 80px;
+      font-size: 2.8em;
+    }
+
+    .button {
+      padding: 15px 40px;
+      margin: 20px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .yes {
+      background-color: #81c784;
+      color: white;
+    }
+
+    .no {
+      background-color: #e57373;
+      color: white;
+      position: absolute;
+    }
+
+    #message {
+      font-size: 2em;
+      color: #ad1457;
+      margin-top: 50px;
+    }
+
+    /* Animación de corazones */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: float 7s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¿Quieres ser mi novia? 💖</h1>
+
+  <button class="button yes" onclick="sayYes()">Sí 🥰</button>
+  <button class="button no" onmouseover="moveNo()">No 🙈</button>
+
+  <div id="message"></div>
+
+  <script>
+    function sayYes() {
+      const mensaje = encodeURIComponent("¡Sí quiero ser tu novia! ❤️");
+      window.location.href = `https://wa.me/573043329665?text=${mensaje}`;
+    }
+
+    function moveNo() {
+      const button = document.querySelector('.no');
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      button.style.left = x + 'px';
+      button.style.top = y + 'px';
+    }
+
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 5 + 3) + "s";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
